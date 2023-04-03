@@ -7,7 +7,7 @@ public class Pie{
         int qty;
         float price;
 
-        public Pie(int expectedID, String expectedFlavor, float expectedCircumference, int expectedQty, float expectedPrice) {
+        public Pie(int id, String flavor, float circumference, int qty, float price) {
                 this.id = id;
                 this.flavor = flavor;
                 this.circumference = circumference;
