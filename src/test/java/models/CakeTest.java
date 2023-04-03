@@ -50,7 +50,7 @@ public class CakeTest {
 
     @Test
     public void testSetPrice() {
-        int expected = 1;
+        float expected = 1;
 
         cake.setPrice(expected);
 
