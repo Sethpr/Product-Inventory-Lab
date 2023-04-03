@@ -66,12 +66,12 @@ public class PieTest {
         float expectedPrice = 30.0f; //I have no clue how much cakes should cost, lol
 
 
-        Pie testCake = new Pie(expectedID, expectedFlavor, expectedCircumference, expectedQty, expectedPrice);
+        Pie testPie = new Pie(expectedID, expectedFlavor, expectedCircumference, expectedQty, expectedPrice);
 
-        Assertions.assertEquals(expectedID, testCake.getId());
-        Assertions.assertEquals(expectedFlavor, testCake.getFlavor());
-        Assertions.assertEquals(expectedCircumference, testCake.getCircumference());
-        Assertions.assertEquals(expectedQty, testCake.getQty());
-        Assertions.assertEquals(expectedPrice, testCake.getPrice());
+        Assertions.assertEquals(expectedID, testPie.getId());
+        Assertions.assertEquals(expectedFlavor, testPie.getFlavor());
+        Assertions.assertEquals(expectedCircumference, testPie.getCircumference());
+        Assertions.assertEquals(expectedQty, testPie.getQty());
+        Assertions.assertEquals(expectedPrice, testPie.getPrice());
     }
 }
