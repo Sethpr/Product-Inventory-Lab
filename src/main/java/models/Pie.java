@@ -7,6 +7,16 @@ public class Pie{
         int qty;
         float price;
 
+        public Pie(int expectedID, String expectedFlavor, float expectedCircumference, int expectedQty, float expectedPrice) {
+                this.id = id;
+                this.flavor = flavor;
+                this.circumference = circumference;
+                this.qty = qty;
+                this.price = price;
+        }
+
+        public Pie(){}
+
         public int getId() {
                 return id;
         }

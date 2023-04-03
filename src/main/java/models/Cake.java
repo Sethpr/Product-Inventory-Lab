@@ -7,6 +7,16 @@ public class Cake {
     int qty;
     float price;
 
+    public Cake(int id, String flavor, int tiers, int qty, float price) {
+        this.id = id;
+        this.flavor = flavor;
+        this.tiers = tiers;
+        this.qty = qty;
+        this.price = price;
+    }
+
+    public Cake(){};
+
     public int getId() {
         return id;
     }

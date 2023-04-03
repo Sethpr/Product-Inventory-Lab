@@ -56,4 +56,22 @@ public class PieTest {
 
         Assertions.assertEquals(expected, pie.getPrice());
     }
+
+    @Test
+    void testConstructor() {
+        int expectedID = 1;
+        String expectedFlavor = "lemon";
+        float expectedCircumference = 3;
+        int expectedQty = 2;
+        float expectedPrice = 30.0f; //I have no clue how much cakes should cost, lol
+
+
+        Pie testCake = new Pie(expectedID, expectedFlavor, expectedCircumference, expectedQty, expectedPrice);
+
+        Assertions.assertEquals(expectedID, testCake.getId());
+        Assertions.assertEquals(expectedFlavor, testCake.getFlavor());
+        Assertions.assertEquals(expectedCircumference, testCake.getCircumference());
+        Assertions.assertEquals(expectedQty, testCake.getQty());
+        Assertions.assertEquals(expectedPrice, testCake.getPrice());
+    }
 }

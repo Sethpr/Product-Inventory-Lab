@@ -56,4 +56,22 @@ public class CakeTest {
 
         Assertions.assertEquals(expected, cake.getPrice());
     }
+
+    @Test
+    void testConstructor() {
+        int expectedID = 1;
+        String expectedFlavor = "lemon";
+        int expectedTiers = 3;
+        int expectedQty = 2;
+        float expectedPrice = 30.0f; //I have no clue how much cakes should cost, lol
+
+
+        Cake testCake = new Cake(expectedID, expectedFlavor, expectedTiers, expectedQty, expectedPrice);
+
+        Assertions.assertEquals(expectedID, testCake.getId());
+        Assertions.assertEquals(expectedFlavor, testCake.getFlavor());
+        Assertions.assertEquals(expectedTiers, testCake.getTiers());
+        Assertions.assertEquals(expectedQty, testCake.getQty());
+        Assertions.assertEquals(expectedPrice, testCake.getPrice());
+    }
 }
