@@ -17,4 +17,27 @@ public class CakeService {
 
         return newCake;
     }
+
+    public boolean delete(int id) {
+        for (int i = 0; i < inventory.size(); i++) {
+            if(inventory.get(i).getId() == id){
+                inventory.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Cake find(int id) {
+        for (int i = 0; i < inventory.size(); i++) {
+            if(inventory.get(i).getId() == id){
+                return inventory.get(i);
+            }
+        }
+        return null;
+    }
+
+    public Cake[] findAll() {
+        return inventory.toArray(new Cake[0]);
+    }
 }
