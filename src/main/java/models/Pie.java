@@ -56,4 +56,15 @@ public class Pie{
         public void setPrice(float price) {
                 this.price = price;
         }
+
+        @Override
+        public String toString() {
+                return "Pie{" +
+                        "id=" + id +
+                        ", flavor='" + flavor + '\'' +
+                        ", circumference=" + circumference +
+                        ", qty=" + qty +
+                        ", price=" + price +
+                        '}';
+        }
 }

@@ -41,4 +41,11 @@ public class PieService {
     public Pie[] findAll() {
         return inventory.toArray(new Pie[0]);
     }
+
+    @Override
+    public String toString() {
+        return "PieService{" +
+                "inventory=" + inventory.toString() +
+                '}';
+    }
 }
