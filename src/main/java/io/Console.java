@@ -63,7 +63,17 @@ public class Console {
                 "**************************************************\n" +
                 "***                Cake or Pie?                ***\n" +
                 "**************************************************\n");
-            return in.next().toLowerCase();
+            return in.next().toLowerCase().trim();
+    }
+
+    public Integer cakeEdit() {
+        out.print("" +
+                "**************************************************\n" +
+                "***          What do you want to update        ***\n" +
+                "***              1) flavor   2) tiers          ***\n" +
+                "***              3) price    4) qty            ***\n" +
+                "**************************************************\n");
+        return in.nextInt();
     }
 
     public String flavor(String type){
@@ -129,6 +139,20 @@ public class Console {
             return -1;
         }
     }
+
+    public Integer id() {
+        out.print("" +
+                "**************************************************\n" +
+                "***          What id do you operate on         ***\n" +
+                "**************************************************\n");
+        try {
+            return in.nextInt();
+        } catch(InputMismatchException e){
+            return -1;
+        }
+    }
+
+
 
 
     public void print(String prompt){

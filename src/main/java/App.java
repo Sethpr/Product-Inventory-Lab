@@ -40,13 +40,17 @@ public class App{
                 }
                 break;
             case 3:
-
+                if(getType().equals("cake")){
+                    cakeUpdate();
+                } else{
+                    pieUpdate();
+                }
                 break;
             case 4:
                 delete(getType());
                 break;
             case 5:
-
+                con.print("idk what is supposed to go here");
                 break;
             case 6:
                 flag = false;
@@ -64,7 +68,35 @@ public class App{
     }
 
     public void delete(String type){
-        //do stuff
+        int target = con.id();
+        if(type.equals("cake")){
+            cakes.delete(target);
+        }else{
+            pies.delete(target);
+        }
+    }
+
+    public void cakeUpdate(){
+        int target = con.id();
+        while(true){
+            switch(con.cakeEdit()){
+                case 1:
+                    cakes.find(target).setFlavor(con.flavor("cake"));
+                    return;
+                case 2:
+                    cakes.find(target).setTiers(con.tiers());
+                    return;
+                case 3:
+                    cakes.find(target).setPrice(con.price());
+                    return;
+                case 4:
+                    cakes.find(target).setQty(con.qty());
+                    return;
+                default:
+                    con.invalid();
+            }
+        }
+
     }
 
     public void generate(String type){ //this feels written incredibly poorly, but sanity checking in console feels wrong
