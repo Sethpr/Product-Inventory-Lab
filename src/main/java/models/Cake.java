@@ -1,6 +1,8 @@
 package models;
 
-public class Cake {
+import java.io.Serializable;
+
+public class Cake implements Serializable {
     int id;
     String flavor;
     int tiers;

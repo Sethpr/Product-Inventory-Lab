@@ -76,6 +76,16 @@ public class Console {
         return in.nextInt();
     }
 
+    public Integer pieEdit() {
+        out.print("" +
+                "**************************************************\n" +
+                "***          What do you want to update        ***\n" +
+                "***              1) flavor   2) circumference  ***\n" +
+                "***              3) price    4) qty            ***\n" +
+                "**************************************************\n");
+        return in.nextInt();
+    }
+
     public String flavor(String type){
         if(type.equals("cake")){
             out.print("" +

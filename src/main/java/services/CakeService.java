@@ -2,9 +2,10 @@ package services;
 
 import models.Cake;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CakeService {
+public class CakeService implements Serializable {
     private static int nextId = 1;
 
     private ArrayList<Cake> inventory = new ArrayList<>();

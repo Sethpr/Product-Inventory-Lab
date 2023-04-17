@@ -2,6 +2,7 @@ import io.Console;
 import services.CakeService;
 import services.PieService;
 
+import java.io.*;
 import java.sql.SQLOutput;
 
 public class App{
@@ -14,6 +15,7 @@ public class App{
     }
 
     public void init(){
+        load();
         con.printWelcome();
         int in;
         while(flag){
@@ -25,6 +27,7 @@ public class App{
             process(in);
         }
         con.printExit();
+        save();
     }
 
      private void process(Integer in){
@@ -96,8 +99,31 @@ public class App{
                     con.invalid();
             }
         }
+    }
+
+    public void pieUpdate(){
+        int target = con.id();
+        while(true){
+            switch(con.pieEdit()){
+                case 1:
+                    pies.find(target).setFlavor(con.flavor("pie"));
+                    return;
+                case 2:
+                    pies.find(target).setCircumference(con.circumference());
+                    return;
+                case 3:
+                    pies.find(target).setPrice(con.price());
+                    return;
+                case 4:
+                    pies.find(target).setQty(con.qty());
+                    return;
+                default:
+                    con.invalid();
+            }
+        }
 
     }
+
 
     public void generate(String type){ //this feels written incredibly poorly, but sanity checking in console feels wrong
         String flavor;
@@ -143,5 +169,36 @@ public class App{
 
     }
 
+    public void save() {
+        try {
+            FileOutputStream f = new FileOutputStream(new File("src/main/resources/db.txt"));
+            ObjectOutputStream o = new ObjectOutputStream(f);
 
+            // Write objects to file
+            o.writeObject(cakes);
+            o.writeObject(pies);
+
+            o.close();
+            f.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void load(){
+        try {
+            FileInputStream fi = new FileInputStream(new File("src/main/resources/db.txt"));
+            ObjectInputStream oi = new ObjectInputStream(fi);
+
+            // Read objects
+            cakes = (CakeService) oi.readObject();
+            pies = (PieService) oi.readObject();
+
+            oi.close();
+            fi.close();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

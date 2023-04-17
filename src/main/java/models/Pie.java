@@ -1,6 +1,8 @@
 package models;
 
-public class Pie{
+import java.io.Serializable;
+
+public class Pie implements Serializable {
         int id;
         String flavor;
         float circumference;

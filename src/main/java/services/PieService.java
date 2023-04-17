@@ -3,9 +3,10 @@ package services;
 
 import models.Pie;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PieService {
+public class PieService implements Serializable {
     private static int nextId = 1;
 
     private ArrayList<Pie> inventory = new ArrayList<>();
