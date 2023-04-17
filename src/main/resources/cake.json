@@ -1,0 +1,7 @@
+[ {
+  "id" : 1,
+  "flavor" : "orange",
+  "tiers" : 2,
+  "qty" : 1000,
+  "price" : 10.0
+} ]

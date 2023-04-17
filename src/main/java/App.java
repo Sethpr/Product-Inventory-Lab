@@ -1,3 +1,6 @@
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import io.Console;
 import services.CakeService;
 import services.PieService;
@@ -170,35 +173,41 @@ public class App{
     }
 
     public void save() {
-        try {
-            FileOutputStream f = new FileOutputStream(new File("src/main/resources/db.txt"));
-            ObjectOutputStream o = new ObjectOutputStream(f);
+//        try {
+//            FileOutputStream f = new FileOutputStream(new File("src/main/resources/db.txt"));
+//            ObjectOutputStream o = new ObjectOutputStream(f);
+//
+//            // Write objects to file
+//            o.writeObject(cakes);
+//            o.writeObject(pies);
+//
+//            o.close();
+//            f.close();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
-            // Write objects to file
-            o.writeObject(cakes);
-            o.writeObject(pies);
-
-            o.close();
-            f.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        cakes.writer();
+        pies.writer();
 
     }
 
     public void load(){
-        try {
-            FileInputStream fi = new FileInputStream(new File("src/main/resources/db.txt"));
-            ObjectInputStream oi = new ObjectInputStream(fi);
+//        try {
+//            FileInputStream fi = new FileInputStream(new File("src/main/resources/db.txt"));
+//            ObjectInputStream oi = new ObjectInputStream(fi);
+//
+//            // Read objects
+//            cakes = (CakeService) oi.readObject();
+//            pies = (PieService) oi.readObject();
+//
+//            oi.close();
+//            fi.close();
+//        } catch (IOException | ClassNotFoundException e) {
+//            throw new RuntimeException(e);
+//        }
 
-            // Read objects
-            cakes = (CakeService) oi.readObject();
-            pies = (PieService) oi.readObject();
-
-            oi.close();
-            fi.close();
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        pies.reader();
+        cakes.reader();
     }
 }

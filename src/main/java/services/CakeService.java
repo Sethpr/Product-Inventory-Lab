@@ -1,9 +1,17 @@
 package services;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import models.Cake;
+import models.Pie;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CakeService implements Serializable {
     private static int nextId = 1;
@@ -40,6 +48,25 @@ public class CakeService implements Serializable {
 
     public Cake[] findAll() {
         return inventory.toArray(new Cake[0]);
+    }
+
+    public void writer(){
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+        try {
+            writer.writeValue(new File("src/main/resources/cake.json"), inventory);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void reader(){
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            this.inventory = (ArrayList<Cake>) objectMapper.readValue(new File("src/main/resources/cake.json"), new TypeReference<List<Cake>>(){});
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

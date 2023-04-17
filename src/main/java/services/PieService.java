@@ -1,10 +1,17 @@
 package services;
 
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import models.Pie;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PieService implements Serializable {
     private static int nextId = 1;
@@ -41,6 +48,25 @@ public class PieService implements Serializable {
 
     public Pie[] findAll() {
         return inventory.toArray(new Pie[0]);
+    }
+
+    public void writer(){
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+        try {
+            writer.writeValue(new File("src/main/resources/pie.json"), inventory);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void reader(){
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            this.inventory = (ArrayList<Pie>) objectMapper.readValue(new File("src/main/resources/pie.json"), new TypeReference<List<Pie>>(){});
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
