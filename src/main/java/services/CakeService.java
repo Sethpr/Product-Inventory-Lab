@@ -40,4 +40,11 @@ public class CakeService {
     public Cake[] findAll() {
         return inventory.toArray(new Cake[0]);
     }
+
+    @Override
+    public String toString() {
+        return "CakeService{" +
+                "inventory=" + inventory.toString() +
+                '}';
+    }
 }
